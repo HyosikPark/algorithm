@@ -1,4 +1,4 @@
-class treeNode {
+class TreeNode {
   constructor(data) {
     this.data = data;
     this.left = null;
@@ -6,13 +6,13 @@ class treeNode {
   }
 }
 
-class insertNode {
+class InsertNode {
   constructor() {
     this.root = null;
   }
 
   insert(data) {
-    let node = new treeNode(data);
+    let node = new TreeNode(data);
 
     if (!this.root) {
       this.root = node;
@@ -22,32 +22,28 @@ class insertNode {
     let current = this.root;
 
     while (current) {
-      if (data === current.data) return;
+      if (current === data) return this;
 
-      if (data < current.data) {
+      if (current.data > data) {
         if (!current.left) {
           current.left = node;
-          break;
+          return this;
         }
         current = current.left;
       }
 
-      if (data > current.data) {
+      if (current.data < data) {
         if (!current.right) {
           current.right = node;
-          break;
+          return this;
         }
+
         current = current.right;
       }
     }
   }
 }
 
-let nums = new insertNode();
-console.log(nums);
-nums.insert(10);
-console.log(nums);
-nums.insert(5);
-console.log(nums);
-nums.insert(7);
-console.log(nums);
+const node = new InsertNode();
+node.insert(10).insert(12).insert(7).insert(9).insert(11);
+console.log(node);
