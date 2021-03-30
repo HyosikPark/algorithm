@@ -1,7 +1,7 @@
 (() => {
   const set = new Set();
 
-  function recursive(arr, str) {
+  (function recursive(arr, str) {
     if (arr.length) {
       for (let i = 0; i < arr.length; i++) {
         const copy = [...arr];
@@ -11,10 +11,8 @@
       }
     }
 
-    if (str) set.add(+str);
-  }
-
-  recursive([1, 2, 3, 4], '');
+    if (str > 0) set.add(+str);
+  })([1, 2, 3, 4], '');
 
   console.log(set);
 })();
